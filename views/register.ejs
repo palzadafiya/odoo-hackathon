@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Additional styles for this specific page */
+    .auth-container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    .auth-container h2 {
+      margin-bottom: 20px;
+      color: #3f51b5;
+    }
+
+    .auth-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-container form input,
+    .auth-container form select,
+    .auth-container form button {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: calc(100% - 20px); /* Adjust width as needed */
+    }
+
+    .auth-container form button {
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .auth-container form button:hover {
+      background-color: #303f9f;
+    }
+
+    .auth-container p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Public Library</h1>
+  </nav>
+
+  <div class="auth-container">
+    <h2>Register</h2>
+    <form id="registrationForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="contactNumber" placeholder="Contact Number" required>
+      <input type="text" id="address" placeholder="Address" required>
+      <input type="file" id="profilePicture" accept="image/*" required>
+      <select id="role">
+        <option value="user">User</option>
+        <option value="librarian">Librarian</option>
+      </select>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
