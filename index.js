@@ -59,7 +59,7 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/dashboard", async (req, res) => {
   if (req.isAuthenticated()) {
-    res.send("Logged In");
+    res.render("user-dashboard.ejs");
   } else {
     res.redirect("/login");
   }
