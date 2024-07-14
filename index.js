@@ -59,7 +59,8 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/dashboard", async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("user-dashboard.ejs");
+    console.log(req.user);
+    res.render("./user/user-dashboard.ejs");
   } else {
     res.redirect("/login");
   }
@@ -193,7 +194,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {
-        const result = await db.query("SELECT * FROM users WHERE mail = $1", [
+        var result = await db.query("SELECT * FROM users WHERE mail = $1", [
           profile.email
         ]);
         if(result.rows.length === 0){
