@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      text-align: center;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding-top: 20;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .book {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .book img {
+      max-width: 200px;
+      margin-right: 20px;
+    }
+    .book-details {
+      max-width: 600px;
+    }
+    .book-details h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .book-details h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #555;
+    }
+    .book-details p {
+      line-height: 1.6;
+    }
+    .book-details .rating,
+    .book-details .genre,
+    .book-details .year {
+      margin: 10px 0;
+    }
+    .button {
+      padding: 12px 20px;
+      background-color: #3f51b5;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #303f9f;
+    }
+
+    /* Logout button specific styles */
+    .logout-button {
+      padding: 12px 20px;
+      background-color:   white; /* Red color for logout */
+      color: #303f9f;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .logout-button:hover {
+      background-color: #d32f2f; /* Darker red on hover */
+    }
+
+    .nav-button {
+      padding: 12px 20px;
+      background-color:   white; /* Red color for logout */
+      color: #303f9f;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-items{
+      display: flex;
+      justify-items: flex-end;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #3f51b5;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar h2 {
+        font-size: 1.5em;
+      }
+
+      .navbar a{
+        text-decoration: none;
+        color: white;
+      }
+
+      .browse-button {
+        padding: 12px 20px;
+        background-color:   white; /* Red color for logout */
+        color: #303f9f;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;
+        border: none;
+        cursor: pointer;
+      }
+      .browse-button:hover {
+        background-color: #f6fa01; /* Darker red on hover */
+      } 
+
+      .ogissue-button {
+        padding: 12px 20px;
+        background-color:   white; /* Red color for logout */
+        color: #303f9f;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;
+        border: none;
+        cursor: pointer;
+      }
+      .ogissue-button:hover {
+        background-color: #17de05; /* Darker red on hover */
+      } 
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="title">
+    <h1>User Dashboard</h1>
+    </div>
+    <div class="nav-items">
+    <button class="logout-button" >Logout</button>
+    <button class="browse-button" >Browse</button>
+    <button class="ogissue-button" >Ongoing Issues</button>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="book">
+      <img id="book-image" src="" alt="Book Cover">
+      <div class="book-details">
+        <h1 id="book-title">Book Title</h1>
+        <h2 id="book-author">Author Name</h2>
+        <div class="rating" id="book-rating">Rating: N/A</div>
+        <div class="genre" id="book-genre">Genre: N/A</div>
+        <div class="year" id="book-year">Year: N/A</div>
+        <p id="book-description">Book description goes here. It provides a brief summary of the book, giving readers an idea of what to expect.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // This URL should point to your backend endpoint that fetches book details from the Google Books API
+      const bookId = "YOUR_BOOK_ID_HERE";  // Replace with actual book ID or fetch dynamically
+      const apiUrl = `http://localhost:3000/api/book/${bookId}`;
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const bookData = {
+            title: data.volumeInfo.title,
+            author: data.volumeInfo.authors.join(", "),
+            description: data.volumeInfo.description,
+            imageUrl: data.volumeInfo.imageLinks.thumbnail,
+            rating: data.volumeInfo.averageRating || "N/A",
+            genre: data.volumeInfo.categories ? data.volumeInfo.categories.join(", ") : "N/A",
+            year: data.volumeInfo.publishedDate.split("-")[0] || "N/A"
+          };
+
+          document.getElementById("book-title").innerText = bookData.title;
+          document.getElementById("book-author").innerText = bookData.author;
+          document.getElementById("book-description").innerText = bookData.description;
+          document.getElementById("book-image").src = bookData.imageUrl;
+          document.getElementById("book-rating").innerText = `Rating: ${bookData.rating}`;
+          document.getElementById("book-genre").innerText = `Genre: ${bookData.genre}`;
+          document.getElementById("book-year").innerText = `Year: ${bookData.year}`;
+        })
+        .catch(error => {
+          console.error("Error fetching book data:", error);
+        });
+    });
+  </script>
+</body>
+</html>
