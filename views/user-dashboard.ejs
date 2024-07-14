@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Additional styles for this specific page */
+    .search-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .search-container .search-input {
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 300px; 
+    }
+
+    .search-container .search-button {
+      padding: 10px 20px;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+    }
+
+    .search-container .search-button:hover {
+      background-color: #303f9f;
+    }
+
+
+    .issued-book {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px; 
+      width: 80%;
+    }
+
+    .issued-book img {
+      max-width: 100px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+
+    .issued-book-details {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .issued-book-title {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #3f51b5;
+    }
+
+    .issued-book-info {
+      margin: 0;
+      color: #666;
+    }
+    
+     .content{
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      padding: 30px 0px;
+     }
+     .issued-books{
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      gap: 20px;
+      border-right: 2px solid #ccc;
+     }
+
+     .user-info{
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      gap: 20px;
+      height: 100%;
+     }
+     .user-info div{
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 10px;
+     }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>User Dashboard</h1>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search books...">
+    <button class="search-button">Search</button>
+    <button class="search-button" onclick="window.location.href='user-new-book.html'">Issue New Book</button>
+  </div>
+
+  
+  <div class="content">
+    <div class="issued-books">
+      <h2>Issued Books</h2>
+      <!-- Example of Issued Book with Placeholder Image -->
+      <div class="issued-book">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div class="issued-book-details">
+          <h4 class="issued-book-title">Book Title</h4>
+          <p class="issued-book-info">Author: Author Name</p>
+          <p class="issued-book-info">Due Date: DD/MM/YYYY</p>
+        </div>
+      </div>
+
+      <!-- Example of Another Issued Book -->
+      <div class="issued-book">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div class="issued-book-details">
+          <h4 class="issued-book-title">Book Title 2</h4>
+          <p class="issued-book-info">Author: Author Name 2</p>
+          <p class="issued-book-info">Due Date: DD/MM/YYYY</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-info">
+      <h2>User Information</h2>
+      <!-- User information fetched from registration.html -->
+       <div>
+        <p><strong>Name:</strong> Mitchell Admin</p>
+        <p><strong>Organization:</strong> YourCompany</p>
+        <p><strong>Address:</strong> 215 Vine St, Scranton PA 18503, United States</p>
+        <p><strong>Contact:</strong> +1 555-555-5555</p>
+        <p><strong>Email:</strong> admin@yourcompany.example.com</p>
+       </div>
+      
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
