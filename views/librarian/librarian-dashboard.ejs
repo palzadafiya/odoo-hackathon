@@ -267,9 +267,9 @@
   <div id="data-container">
   <div class="add-book-form" id="add-book">
     <h2>Add New Book</h2>
-    <form id="addBookForm">
-      <input type="text" id="isbn" placeholder="Enter ISBN" required>
-      <input type="number" id="copies" placeholder="Number of Copies">
+    <form id="addBookForm" action="/librarian/add-book" method="post">
+      <input type="text" name="isbn" id="isbn" placeholder="Enter ISBN" required>
+      <input type="number" name="copies" id="copies" placeholder="Number of Copies">
       <button type="submit">Submit</button>
     </form>
   </div>

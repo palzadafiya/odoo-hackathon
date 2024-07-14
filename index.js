@@ -7,6 +7,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import session from "express-session";
 import dotenv from "dotenv";
+import axios from "axios";
 
 dotenv.config();
 
@@ -93,9 +94,38 @@ app.get("/librarian", async (req, res) => {
       res.redirect("/");
     }
   }
-  
-  
 });
+
+app.post("/librarian/add-book", async (req, res) => {
+  const {isbn, copies} = req.body;
+  try{
+      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+      console.log(response);
+      let data = response.items;
+    console.log(data);
+    await db.query(`INSERT INTO books 
+      (isbn, title, author, description, release_year, page_count, avg_rating, rating_count
+      text_language, img_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,[
+        isbn,
+        data.volumeInfo.title,
+        data.volumeInfo.authors[0],
+        data.description,
+        data.publishedDate.slice(0,4),
+        data.pageCount,
+        0,
+        0,
+        data.language,
+        data.imageLinks.thumbnail
+      ]);
+
+    await db.query(`INSERT INTO bookshelf (isbn, copies_available) VALUES ($1, $2)`, [
+      isbn, copies
+    ]);
+  }catch(e){console.log("Error: ", e);}
+  console.log("Hello");
+  
+
+})
 
 app.get("/submit", (req, res) => {
   if (req.isAuthenticated()) {
