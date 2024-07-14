@@ -59,12 +59,17 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/dashboard", async (req, res) => {
   if (req.isAuthenticated()) {
+    if(req.user.role === "user"){
+      res.render("./user/user-dashboard.ejs");
+    }
     console.log(req.user);
-    res.render("./user/user-dashboard.ejs");
+    
   } else {
     res.redirect("/login");
   }
 });
+
+app.get("/user/browse")
 
 app.get("/submit", (req, res) => {
   if (req.isAuthenticated()) {
@@ -113,6 +118,7 @@ app.post("/register", async (req, res) => {
   const username = req.body.username;
   const mail = req.body.mail;
   const password = req.body.password;
+  const role = req.body.role;
 
   try {
     const checkResult = await db.query("SELECT * FROM users WHERE email = $1", [
@@ -130,7 +136,7 @@ app.post("/register", async (req, res) => {
             "INSERT INTO users (username, mail, hash) VALUES ($1, $2, $3) RETURNING *",
             [username, mail, hash]
           );
-          const user = result.rows[0];
+          const user = {...result.rows[0], role: role};
           req.login(user, (err) => {
             if (err) {
               console.error("Error logging in user:", err);
@@ -161,7 +167,7 @@ passport.use(
         }
        
       if (result.rows.length > 0) {
-        const user = result.rows[0];
+        const user = {...result.rows[0], role: role};
         const storedHashedPassword = user.hash;
         bcrypt.compare(password, storedHashedPassword, (err, valid) => {
           if (err) {
@@ -193,23 +199,26 @@ passport.use(
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     async (accessToken, refreshToken, profile, cb) => {
+      var role = "user";
       try {
         var result = await db.query("SELECT * FROM users WHERE mail = $1", [
           profile.email
         ]);
         if(result.rows.length === 0){
+            role="librarian";
             result = await db.query("SELECT * FROM librarians WHERE mail = $1", [
                 profile.email
             ]);
         }
         if (result.rows.length === 0) {
+          role="user";
           const newUser = await db.query(
             "INSERT INTO users (username, mail, hash) VALUES ($1, $2, $3) RETURNING *",
             [profile.displayName, profile.email, "google"]
           );
-          return cb(null, newUser.rows[0]);
+          return cb(null,{...newUser.rows[0], role: role});
         } else {
-          return cb(null, result.rows[0]);
+          return cb(null, {...result.rows[0], role: role});
         }
       } catch (err) {
         return cb(err);
