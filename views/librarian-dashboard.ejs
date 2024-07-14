@@ -8,126 +8,129 @@
   <style>
     /* Additional styles for this specific page */
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Body styling */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-  text-align: center;
-}
+    /* Body styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      text-align: center;
+    }
 
-/* Navbar styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #3f51b5;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    /* Navbar styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #3f51b5;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.navbar h2 {
-  font-size: 1.5em;
-}
+    .navbar h1 {
+      font-size: 1.5em;
+    }
 
-.navbar a{
-  text-decoration: none;
-  color: white;
-}
+    .navbar a {
+      text-decoration: none;
+      color: white;
+    }
 
-/* Auth container styling */
-.auth-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    /* Auth container styling */
+    .auth-container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.auth-container h2 {
-  margin-bottom: 20px;
-  color: #3f51b5;
-}
+    .auth-container h2 {
+      margin-bottom: 20px;
+      color: #3f51b5;
+    }
 
-.auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .auth-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.auth-container input, .auth-container select {
-  padding: 10px;
-  border: 2px solid #3f51b5;
-  border-radius: 4px;
-  font-size: 1em;
-}
+    .auth-container input, .auth-container select {
+      padding: 10px;
+      border: 2px solid #3f51b5;
+      border-radius: 4px;
+      font-size: 1em;
+    }
 
-.auth-container button {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3f51b5;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    .auth-container button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #3f51b5;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-.auth-container button:hover {
-  background-color: #303f9f;
-}
+    .auth-container button:hover {
+      background-color: #303f9f;
+    }
 
-.auth-container p {
-  margin-top: 10px;
-}
-.auth-container a {
-  color: #3f51b5;
-  text-decoration: none;
-}
-.auth-container a:hover {
-  text-decoration: underline;
-}
+    .auth-container p {
+      margin-top: 10px;
+    }
 
-/* Button styling */
-.button {
-  padding: 12px 20px;
-  background-color: #3f51b5;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-left: 10px;
-  border: none;
-  cursor: pointer;
-}
+    .auth-container a {
+      color: #3f51b5;
+      text-decoration: none;
+    }
 
-.button:hover {
-  background-color: #303f9f;
-}
+    .auth-container a:hover {
+      text-decoration: underline;
+    }
 
-/* Logout button specific styles */
-.logout-button {
-  padding: 12px 20px;
-  background-color:   white; /* Red color for logout */
-  color: #303f9f;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-left: 10px;
-  border: none;
-  cursor: pointer;
-}
+    /* Button styling */
+    .button {
+      padding: 12px 20px;
+      background-color: #3f51b5;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
 
-.logout-button:hover {
-  background-color: #d32f2f; /* Darker red on hover */
-}
+    .button:hover {
+      background-color: #303f9f;
+    }
+
+    /* Logout button specific styles */
+    .logout-button {
+      padding: 12px 20px;
+      background-color: white; /* Red color for logout */
+      color: #303f9f;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .logout-button:hover {
+      background-color: #d32f2f; /* Darker red on hover */
+    }
+
     .search-container {
       text-align: center;
       margin-top: 20px;
@@ -204,6 +207,45 @@ body {
       margin: 0;
       color: #666;
     }
+
+    .add-book-form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .add-book-form h2 {
+      color: #3f51b5;
+      margin-bottom: 15px;
+    }
+
+    .add-book-form input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .add-book-form button {
+      padding: 10px 20px;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .add-book-form button:hover {
+      background-color: #303f9f;
+    }
   </style>
 </head>
 <body>
@@ -236,13 +278,20 @@ body {
         <div class="issued-book-details">
           <h4 class="issued-book-title">Book Title 2</h4>
           <p class="issued-book-info">Author: Author Name 2</p>
-          <p class="issued-book-info">Issued to: User Name </p>
+          <p class="issued-book-info">Issued to: User Name</p>
           <p class="issued-book-info">Due Date: DD/MM/YYYY</p>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="auth.js"></script>
+  <div class="add-book-form">
+    <h2>Add New Book</h2>
+    <form id="addBookForm">
+      <input type="text" id="isbn" placeholder="Enter ISBN" required>
+      <input type="number" id="copies" placeholder="Number of Copies">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </body>
 </html>
