@@ -35,7 +35,6 @@
       background-color: #303f9f;
     }
 
-
     .issued-book {
       display: flex;
       align-items: center;
@@ -137,60 +136,6 @@ body {
   color: white;
 }
 
-/* Auth container styling */
-.auth-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.auth-container h2 {
-  margin-bottom: 20px;
-  color: #3f51b5;
-}
-
-.auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.auth-container input, .auth-container select {
-  padding: 10px;
-  border: 2px solid #3f51b5;
-  border-radius: 4px;
-  font-size: 1em;
-}
-
-.auth-container button {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3f51b5;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.auth-container button:hover {
-  background-color: #303f9f;
-}
-
-.auth-container p {
-  margin-top: 10px;
-}
-.auth-container a {
-  color: #3f51b5;
-  text-decoration: none;
-}
-.auth-container a:hover {
-  text-decoration: underline;
-}
-
 /* Button styling */
 .button {
   padding: 12px 20px;
@@ -225,6 +170,36 @@ body {
   background-color: #d32f2f; /* Darker red on hover */
 } 
 
+.browse-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.browse-button:hover {
+  background-color: #f6fa01; /* Darker red on hover */
+} 
+
+.ogissue-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.ogissue-button:hover {
+  background-color: #17de05; /* Darker red on hover */
+} 
+
 a{
   color: black !important;
 }
@@ -232,6 +207,7 @@ a{
   display: flex;
   justify-content: flex-end;
 }
+
 
   </style>
 </head>
@@ -241,8 +217,8 @@ a{
     
     <div class="nav-items">
       <a class="logout-button" href="/logout">Logout</a>
-      <a class="logout-button" href="/logout">Browse</a>
-      <a class="logout-button" href="/logout">Ongoing Issues</a>
+      <a class="browse-button" href="/logout">Browse</a>
+      <a class="ogissue-button" href="/logout">Ongoing Issues</a>
     </div>
   </nav>
 
