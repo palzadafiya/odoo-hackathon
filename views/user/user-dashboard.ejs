@@ -228,13 +228,22 @@ body {
 a{
   color: black !important;
 }
+.nav-items{
+  display: flex;
+  justify-content: flex-end;
+}
 
   </style>
 </head>
 <body>
   <nav class="navbar">
     <h1>User Dashboard</h1>
-    <a class="logout-button" href="/logout">Logout</a>
+    
+    <div class="nav-items">
+      <a class="logout-button" href="/logout">Logout</a>
+      <a class="logout-button" href="/logout">Browse</a>
+      <a class="logout-button" href="/logout">Ongoing Issues</a>
+    </div>
   </nav>
 
   <div class="search-container">
