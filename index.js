@@ -57,15 +57,9 @@ app.get("/logout", (req, res) => {
     });
   });
   
-  app.get("/secrets", async (req, res) => {
+  app.get("/dashboard", async (req, res) => {
     if (req.isAuthenticated()) {
-      //TODO: Update this to pull in the user secret to render in secrets.ejs
-      let response = await db.query("SELECT * FROM users WHERE email = $1", [
-        req.user.email
-      ]);
-      res.render("secrets.ejs",{
-        secret: (response.rows)[0].secret
-      });
+      res.send("Logged In");
       
     } else {
       res.redirect("/login");
@@ -120,7 +114,8 @@ app.get("/logout", (req, res) => {
   );
   
   app.post("/register", async (req, res) => {
-    const email = req.body.username;
+    const username = req.body.username;
+    const mail = req.body.mail;
     const password = req.body.password;
   
     try {
@@ -136,12 +131,13 @@ app.get("/logout", (req, res) => {
             console.error("Error hashing password:", err);
           } else {
             const result = await db.query(
-              "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *",
-              [email, hash]
+              "INSERT INTO users (username, mail, hash) VALUES ($1, $2, $3) RETURNING *",
+              [username, mail, hash]
             );
             const user = result.rows[0];
             req.login(user, (err) => {
               console.log("success");
+              // modify route below
               res.redirect("/secrets");
             });
           }
@@ -158,7 +154,7 @@ app.get("/logout", (req, res) => {
     "local",
     new Strategy(async function verify(username, password, cb) {
       try {
-        const result = await db.query("SELECT * FROM users WHERE email = $1 ", [
+        const result = await db.query("SELECT * FROM users WHERE username = $1 ", [
           username,
         ]);
         if (result.rows.length > 0) {
@@ -191,19 +187,19 @@ app.get("/logout", (req, res) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/google/secrets",
+        callbackURL: "http://localhost:3000/auth/google/dashboard",
         userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
       },
       async (accessToken, refreshToken, profile, cb) => {
         try {
           console.log(profile);
-          const result = await db.query("SELECT * FROM users WHERE email = $1", [
+          const result = await db.query("SELECT * FROM users WHERE mail = $1", [
             profile.email,
           ]);
           if (result.rows.length === 0) {
             const newUser = await db.query(
-              "INSERT INTO users (email, password) VALUES ($1, $2)",
-              [profile.email, "google"]
+              "INSERT INTO users (username, mail, password) VALUES ($1, $2, $3)",
+              [profile.name, profile.email, "google"]
             );
             return cb(null, newUser.rows[0]);
           } else {
