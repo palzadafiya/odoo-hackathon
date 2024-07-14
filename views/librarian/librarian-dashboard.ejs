@@ -246,6 +246,16 @@
     .add-book-form button:hover {
       background-color: #303f9f;
     }
+
+    #data-container{
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+    
+    }
+
+    #my-books{
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -254,12 +264,17 @@
     <button class="logout-button" onclick="logout()">Logout</button>
   </nav>
 
-  <div class="search-container">
-    <input type="text" class="search-input" placeholder="Search books...">
-    <button class="search-button">Search</button>
+  <div id="data-container">
+  <div class="add-book-form" id="add-book">
+    <h2>Add New Book</h2>
+    <form id="addBookForm">
+      <input type="text" id="isbn" placeholder="Enter ISBN" required>
+      <input type="number" id="copies" placeholder="Number of Copies">
+      <button type="submit">Submit</button>
+    </form>
   </div>
 
-  <div class="content">
+  <div class="content" id="books-issued">
     <div class="issued-books">
       <h2>Issued Books to Users</h2>
       <!-- Example of Issued Book with Placeholder Image -->
@@ -285,13 +300,11 @@
     </div>
   </div>
 
-  <div class="add-book-form">
-    <h2>Add New Book</h2>
-    <form id="addBookForm">
-      <input type="text" id="isbn" placeholder="Enter ISBN" required>
-      <input type="number" id="copies" placeholder="Number of Copies">
-      <button type="submit">Submit</button>
-    </form>
+  
+
+  <div id = "my-books"> 
+    <h2>My Books</h2>
   </div>
+</div>
 </body>
 </html>

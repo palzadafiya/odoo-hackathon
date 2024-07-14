@@ -60,7 +60,9 @@ app.get("/logout", (req, res, next) => {
 app.get("/dashboard", async (req, res) => {
   if (req.isAuthenticated()) {
     if(req.user.role === "user"){
-      res.render("./user/user-dashboard.ejs");
+      res.redirect("/user");
+    }else{
+      res.redirect("/librarian");
     }
     console.log(req.user);
     
@@ -69,7 +71,31 @@ app.get("/dashboard", async (req, res) => {
   }
 });
 
-app.get("/user/browse")
+app.get("/user", async (req, res) => {
+  if(req.isAuthenticated()){
+    if(req.user.role === "user"){
+      res.render("./user/user-dashboard.ejs");
+    }else{
+      res.redirect("/");
+    }
+  }
+});
+
+app.get("/user/browse", (req, res) => {
+  res.render("./user/user-browse.ejs");
+})
+
+app.get("/librarian", async (req, res) => {
+  if(req.isAuthenticated()){
+    if(req.user.role === "librarian"){
+    res.render("./librarian/librarian-dashboard.ejs");
+    }else{
+      res.redirect("/");
+    }
+  }
+  
+  
+});
 
 app.get("/submit", (req, res) => {
   if (req.isAuthenticated()) {
