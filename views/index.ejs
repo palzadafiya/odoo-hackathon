@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #3f51b5;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .button-container {
+      margin-right: 20px;
+    }
+
+    .button-container .button {
+      padding: 12px 20px;
+      background-color: white;
+      color: #3f51b5;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button-container .button:hover {
+      background-color: #303f9f;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .search-container input[type="text"] {
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-left: 10px;
+      width: 100px
+    }
+
+    .search-container button:hover {
+      background-color: #303f9f;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .book-list-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+
+    .book-list {
+      width: 45%;
+    }
+
+    .book-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-item img {
+      max-width: 100px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+
+    .book-item h4 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #3f51b5;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Public Library</h2>
+    <div class="button-container">
+      <a href="login.html" class="button">Login</a>
+      <a href="registration.html" class="button">Register</a>
+    </div>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search books...">
+    <button>Search</button>
+  </div>
+
+  <div class="hero-section">
+    <h2>Welcome to the Public Library Management System</h2>
+    <p>Explore our collection, borrow books, and enjoy reading!</p>
+  </div>
+
+  <div class="book-list-container">
+    <div class="book-list">
+      <h3>Trending Books</h3>
+      <br>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>Trending Book 1</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Fiction</p>
+        </div>
+      </div>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>Trending Book 2</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Non-Fiction</p>
+        </div>
+      </div>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>Trending Book 3</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Mystery</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-list">
+      <h3>New Arrivals</h3>
+      <br>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>New Arrival Book 1</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Science Fiction</p>
+        </div>
+      </div>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>New Arrival Book 2</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Fantasy</p>
+        </div>
+      </div>
+      <div class="book-item">
+        <img src="https://via.placeholder.com/150" alt="Book Cover">
+        <div>
+          <h4>New Arrival Book 3</h4>
+          <p>Author: Author Name</p>
+          <p>Genre: Romance</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Public Library Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
