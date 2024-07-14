@@ -176,15 +176,72 @@
     footer p {
         margin: 0;
     }
+
+    .logout-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+} 
+
+    .browse-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.browse-button:hover {
+  background-color: #f6fa01; /* Darker red on hover */
+} 
+
+.ogissue-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.ogissue-button:hover {
+  background-color: #17de05; /* Darker red on hover */
+} 
+
+a{
+  color: black !important;
+}
+.nav-items{
+  display: flex;
+  justify-content: flex-end;
+}
 </style>
 </head>
 <body>
-<nav class="navbar">
-    <h2>Public Library</h2>
-    <div class="button-container">
-        <a class="button" href="/logout">Logout</a>
-    </div>
-</nav>
+    <nav class="navbar">
+        <h1>My Books</h1>
+        
+        <div class="nav-items">
+          <a class="logout-button" href="/logout">Logout</a>
+          <a class="browse-button" href="/user/browse">Browse</a>
+          <a class="ogissue-button" href="/user">Currently Reading</a>
+        </div>
+      </nav>
 
 <div class="search-container">
     <input type="text" class="search-input" placeholder="Search books...">
