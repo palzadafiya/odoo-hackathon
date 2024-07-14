@@ -3,10 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Dashboard</title>
+  <title>Librarian Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <style>
     /* Additional styles for this specific page */
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: center;
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #3f51b5;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h2 {
+  font-size: 1.5em;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+}
+
+/* Auth container styling */
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+  color: #3f51b5;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-container input, .auth-container select {
+  padding: 10px;
+  border: 2px solid #3f51b5;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.auth-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+  background-color: #303f9f;
+}
+
+.auth-container p {
+  margin-top: 10px;
+}
+.auth-container a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* Button styling */
+.button {
+  padding: 12px 20px;
+  background-color: #3f51b5;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #303f9f;
+}
+
+/* Logout button specific styles */
+.logout-button {
+  padding: 12px 20px;
+  background-color:   white; /* Red color for logout */
+  color: #303f9f;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
     .search-container {
       text-align: center;
       margin-top: 20px;
@@ -17,7 +138,7 @@
       border-radius: 20px;
       border: 1px solid #ccc;
       font-size: 1rem;
-      width: 300px; 
+      width: 300px; /* Adjust width as needed */
     }
 
     .search-container .search-button {
@@ -35,6 +156,20 @@
       background-color: #303f9f;
     }
 
+    .content {
+      display: flex;
+      justify-content: center; /* Align content to the center horizontally */
+      align-items: flex-start; /* Align items at the top */
+      padding: 20px;
+    }
+
+    .issued-books {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 70%; /* Adjust width as needed */
+      max-width: 600px; /* Limit maximum width */
+    }
 
     .issued-book {
       display: flex;
@@ -43,8 +178,7 @@
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px; 
-      width: 80%;
+      margin-bottom: 20px; /* Add margin between books */
     }
 
     .issued-book img {
@@ -70,57 +204,22 @@
       margin: 0;
       color: #666;
     }
-    
-     .content{
-      display: flex;
-      align-items: start;
-      justify-content: center;
-      padding: 30px 0px;
-     }
-     .issued-books{
-      flex: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      gap: 20px;
-      border-right: 2px solid #ccc;
-     }
-
-     .user-info{
-      flex: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      gap: 20px;
-      height: 100%;
-     }
-     .user-info div{
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 10px;
-     }
-
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <h1>User Dashboard</h1>
+    <h1>Librarian Dashboard</h1>
     <button class="logout-button" onclick="logout()">Logout</button>
   </nav>
 
   <div class="search-container">
     <input type="text" class="search-input" placeholder="Search books...">
     <button class="search-button">Search</button>
-    <button class="search-button" onclick="window.location.href='user-new-book.html'">Issue New Book</button>
   </div>
 
-  
   <div class="content">
     <div class="issued-books">
-      <h2>Issued Books</h2>
+      <h2>Issued Books to Users</h2>
       <!-- Example of Issued Book with Placeholder Image -->
       <div class="issued-book">
         <img src="https://via.placeholder.com/150" alt="Book Cover">
@@ -137,22 +236,10 @@
         <div class="issued-book-details">
           <h4 class="issued-book-title">Book Title 2</h4>
           <p class="issued-book-info">Author: Author Name 2</p>
+          <p class="issued-book-info">Issued to: User Name </p>
           <p class="issued-book-info">Due Date: DD/MM/YYYY</p>
         </div>
       </div>
-    </div>
-
-    <div class="user-info">
-      <h2>User Information</h2>
-      <!-- User information fetched from registration.html -->
-       <div>
-        <p><strong>Name:</strong> Mitchell Admin</p>
-        <p><strong>Organization:</strong> YourCompany</p>
-        <p><strong>Address:</strong> 215 Vine St, Scranton PA 18503, United States</p>
-        <p><strong>Contact:</strong> +1 555-555-5555</p>
-        <p><strong>Email:</strong> admin@yourcompany.example.com</p>
-       </div>
-      
     </div>
   </div>
 
