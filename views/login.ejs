@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body styling */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: center;
+      }
+
+      /* Navbar styling */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #3f51b5;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar h2 {
+        font-size: 1.5em;
+      }
+
+      .navbar a{
+        text-decoration: none;
+        color: white;
+      }
+
+      /* Auth container styling */
+      .auth-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .auth-container h2 {
+        margin-bottom: 20px;
+        color: #3f51b5;
+      }
+
+      .auth-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .auth-container input, .auth-container select {
+        padding: 10px;
+        border: 2px solid #3f51b5;
+        border-radius: 4px;
+        font-size: 1em;
+      }
+
+      .auth-container button {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #3f51b5;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .auth-container button:hover {
+        background-color: #303f9f;
+      }
+
+      .auth-container p {
+        margin-top: 10px;
+      }
+      .auth-container a {
+        color: #3f51b5;
+        text-decoration: none;
+      }
+      .auth-container a:hover {
+        text-decoration: underline;
+      }
+
+      /* Button styling */
+      .button {
+        padding: 12px 20px;
+        background-color: #3f51b5;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #303f9f;
+      }
+
+      /* Logout button specific styles */
+      .logout-button {
+        padding: 12px 20px;
+        background-color:   white; /* Red color for logout */
+        color: #303f9f;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .logout-button:hover {
+        background-color: #d32f2f; /* Darker red on hover */
+      }
+          
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -33,7 +157,5 @@
     </div>
     <p>Don't have an account? <a href="/register">Register here</a></p>
   </div>
-
-  <script src="auth.js"></script>
 </body>
 </html>
